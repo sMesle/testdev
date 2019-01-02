@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var product = require('./routes/product'); // Imports routes for the products
 var app = express();
+var flash    = require('connect-flash');
 
 
 // Set up mongoose connection

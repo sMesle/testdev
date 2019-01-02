@@ -5,43 +5,43 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style>
         body         { padding-top:80px; }
+        div          { padding:15px; }
+
     </style>
 </head>
-<body>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
 
-    <h1><span class="fa fa-user-plus"></span> Ajouter un objet</h1>
+<%if (products.new > 0) { %>
+<p>lol</p>
+<% } %>
 
-    <form action="/products/ajouter" method="post">
-        <div class="form-group">
-            <label>Type d'objet</label>
-            <input type="text" class="form-control" name="name">
-        </div>
-        <div class="form-group">
-            <label>Nom de l'objet</label>
-            <input type="text" class="form-control" name="type">
-        </div>
-        <div class="form-group">
-            <label>Etat</label>
-            <select multiple class="form-control" name="etat">
-                 <option>Perdu</option>
-                 <option>Trouvé</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input type="text" class="form-control" name="description">
-        </div>
-        <div class="form-group">
-                <label>Date</label>
-                <input type="date" class="form-control" name="date">
-        </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Ajouter </button>
-    </form>
-
+<div class="container text-center">
+<a href="/products/ajouter" class="btn btn-primary"><span class="fa fa-add"></span> Ajouter un Objet</a>
 </div>
-</div>
-</body>
-</html>
+<hr>
+<% products.forEach(function (product) { %>
+    <div class="container text-center">
+    
+    <div class="card text-center">
+    
+
+
+        <div class="card-header">
+            <h2> <%= product.name %> </h2>
+            <h5> Type : <%= product.type %></h5>
+        </div>
+        <div class="card-title">
+            <h5>Etat : <%= product.etat %> </h5>
+            <p class="card-text"><span class="fa fa-info-circle"></span> Description : <%= product.description %> </p>
+            <a href="" class="btn btn-dark"> Edit </a>
+        </div>
+        <div class="card-footer text-muted">
+            <h5> <%= moment(product.date).format('Do MMMM, YYYY'); %> </h5>
+        </div>
+        </div>
+    </div>
+
+    <% }) %>
+
+
+    

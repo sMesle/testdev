@@ -1,8 +1,21 @@
 var Product = require('../models/product');
+var moment = require('moment');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
-    res.render('product.ejs');
+    res.render('productadd.ejs');
+};
+
+exports.list = function(req, res) {
+    Product.find({}, function(err, product) {
+        if (err) return next(err);
+        res.render('product.ejs', {
+            products: product,
+            moment: moment
+
+        })
+    })
+
 };
 
 exports.product_create = function (req, res) {
@@ -20,7 +33,7 @@ exports.product_create = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Product Created successfully')
+        res.redirect('/products');
     })
 };
 
