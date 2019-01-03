@@ -20,6 +20,7 @@
 <div class="container text-center">
     <a href="/products/ajouter" class="btn btn-primary"><span class="fa fa-add"></span> Ajouter un Objet</a>
 </div>
+
 <hr>
 <% products.forEach(function (product) { %>
 <div class="container text-center">
@@ -43,7 +44,7 @@
             <p class="card-text"><span class="fa fa-info-circle"></span> Description :
                 <%= product.description %>
             </p>
-            <a href="" class="btn btn-dark"> Edit </a>
+            <a href="products/<%=product.id %>/editer" class="btn btn-dark"> Edit </a>
         </div>
         <div class="card-footer text-muted">
             <h5>
