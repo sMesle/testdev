@@ -1,11 +1,11 @@
-// app.js
-
 var express = require('express');
 var bodyParser = require('body-parser');
 
 var product = require('./routes/product'); // Imports routes for the products
 var app = express();
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 
 // Set up mongoose connection
@@ -19,8 +19,18 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(cookieParser('secretString'));
+app.use(session({
+    cookie: {
+        maxAge: 60000
+    }
+}));
+app.use(flash());
 app.use('/products', product);
+
 
 var port = 1234;
 

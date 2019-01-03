@@ -1,47 +1,56 @@
 <!doctype html>
 <html>
+
 <head>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style>
-        body         { padding-top:80px; }
-        div          { padding:15px; }
+        body {
+            padding-top: 80px;
+        }
 
+        div {
+            padding: 15px;
+        }
     </style>
 </head>
 
-<%if (products.new > 0) { %>
-<p>lol</p>
-<% } %>
 
 
 <div class="container text-center">
-<a href="/products/ajouter" class="btn btn-primary"><span class="fa fa-add"></span> Ajouter un Objet</a>
+    <a href="/products/ajouter" class="btn btn-primary"><span class="fa fa-add"></span> Ajouter un Objet</a>
 </div>
 <hr>
 <% products.forEach(function (product) { %>
-    <div class="container text-center">
-    
+<div class="container text-center">
+
     <div class="card text-center">
-    
+
 
 
         <div class="card-header">
-            <h2> <%= product.name %> </h2>
-            <h5> Type : <%= product.type %></h5>
+            <h2>
+                <%= product.name %>
+            </h2>
+            <h5> Type :
+                <%= product.type %>
+            </h5>
         </div>
         <div class="card-title">
-            <h5>Etat : <%= product.etat %> </h5>
-            <p class="card-text"><span class="fa fa-info-circle"></span> Description : <%= product.description %> </p>
+            <h5>Etat :
+                <%= product.etat %>
+            </h5>
+            <p class="card-text"><span class="fa fa-info-circle"></span> Description :
+                <%= product.description %>
+            </p>
             <a href="" class="btn btn-dark"> Edit </a>
         </div>
         <div class="card-footer text-muted">
-            <h5> <%= moment(product.date).format('Do MMMM, YYYY'); %> </h5>
-        </div>
+            <h5>
+                <%= moment(product.date).format('Do MMMM, YYYY'); %>
+            </h5>
         </div>
     </div>
+</div>
 
-    <% }) %>
-
-
-    
+<% }) %>
