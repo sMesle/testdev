@@ -41,8 +41,8 @@ exports.view_edit_product = function (req, res) {
 
 exports.product_create = function (req, res) {
   var product = new Product({
-    name: req.body.name,
     type: req.body.type,
+    name: req.body.name,
     etat: req.body.etat,
     description: req.body.description,
     date: req.body.date
