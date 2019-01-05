@@ -9,6 +9,7 @@ exports.user_view_login = function (req, res) {
 };
 
 exports.user_register = function (req, res) {
+    if()
     var user = new User({
         email: req.body.email,
         username: req.body.username,
