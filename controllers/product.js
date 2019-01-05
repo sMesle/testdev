@@ -28,8 +28,8 @@ exports.view_edit = function (req, res) {
 
 exports.view_edit_product = function (req, res) {
   Product.findByIdAndUpdate(req.params.id, {
-    name: req.body.name,
     type: req.body.type,
+    name: req.body.name,
     etat: req.body.etat,
     description: req.body.description,
     date: req.body.date

@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var product = require('./routes/product'); // Imports routes for the products
+var user = require('./routes/user');
 var app = express();
 var flash = require('connect-flash');
 var session = require('express-session');
@@ -30,6 +31,7 @@ app.use(session({
 }));
 app.use(flash());
 app.use('/products', product);
+app.use('/', user);
 
 
 var port = 1234;
