@@ -24,7 +24,7 @@ var UserSchema = new Schema({
         required: true,
     }
 });
-//hashing a password before saving it to the database
+
 UserSchema.pre('save', function (next) {
     var user = this;
     bcrypt.hash(user.password, 10, function (err, hash) {
@@ -38,5 +38,4 @@ UserSchema.pre('save', function (next) {
 });
 
 
-// Export the model
 module.exports = mongoose.model("User", UserSchema);

@@ -2,11 +2,11 @@ var Product = require("../models/product");
 var moment = require("moment");
 
 
-exports.test = function (req, res) {
+exports.view_product_add = function (req, res) {
   res.render("productadd.ejs");
 };
 
-exports.list = function (req, res) {
+exports.product_list = function (req, res) {
   Product.find({}, function (err, product) {
     if (err) return next(err);
     res.render("product.ejs", {
@@ -26,7 +26,7 @@ exports.view_edit = function (req, res) {
   });
 };
 
-exports.view_edit_product = function (req, res) {
+exports.edit_product = function (req, res) {
   Product.findByIdAndUpdate(req.params.id, {
     type: req.body.type,
     name: req.body.name,
@@ -63,18 +63,9 @@ exports.product_details = function (req, res) {
   });
 };
 
-exports.product_update = function (req, res) {
-  Product.findByIdAndUpdate(req.params.id, {
-    $set: req.body
-  }, function (err) {
-    if (err) return next(err);
-    res.send("Product udpated.");
-  });
-};
-
 exports.product_delete = function (req, res) {
   Product.findByIdAndRemove(req.params.id, function (err) {
     if (err) return next(err);
-    res.send("Deleted successfully!");
+    res.send("Produit supprimé");
   });
 };

@@ -8,8 +8,15 @@ exports.user_view_login = function (req, res) {
     res.render("login.ejs");
 };
 
-exports.user_register = function (req, res) {
-    if()
+exports.user_register = function (req, res, next) {
+
+    if(req.body.password != req.body.rePassword) {
+        var err = new Error("Mot de passe non identique");
+        err.status = 400;
+        res.send("Mot de passe non identique");
+        return next(err);
+    }
+
     var user = new User({
         email: req.body.email,
         username: req.body.username,
@@ -24,3 +31,7 @@ exports.user_register = function (req, res) {
         res.redirect("/");
     });
 };
+
+exports.user_login = function (req,res) {
+
+}
