@@ -1,3 +1,4 @@
+STEVE DEMEULEMEESTER
 Test technique pour Troov
 
 J'ai utilisé MongoDB, ExpressJS et node.js comme demandé. Pour le templating j'ai utilisé ejs.
